@@ -16,6 +16,16 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
         // Override point for customization after application launch.
+        
+        // Create the window used for the entire app and apply a tint color
+        window = UIWindow(frame: UIScreen.main.bounds)
+        window?.makeKeyAndVisible()
+        window?.tintColor = UIColor.black
+        
+        // Instantiate our subclass of UITabBarController and establish it as the rootViewController
+        let tabBar = TabBarViewController.instantiateFrom(storyboard: .TabBarViewController)
+        window?.rootViewController = tabBar
+        
         return true
     }
 

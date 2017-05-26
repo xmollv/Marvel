@@ -13,6 +13,7 @@
 		B18CF9AA1ED8A88300FB7C22 /* Logger.swift in Sources */ = {isa = PBXBuildFile; fileRef = B18CF9A91ED8A88300FB7C22 /* Logger.swift */; };
 		B18CF9AC1ED8AAA200FB7C22 /* TabBarViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B18CF9AB1ED8AAA200FB7C22 /* TabBarViewController.swift */; };
 		B18CF9AF1ED8AAF100FB7C22 /* TabBarViewController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B18CF9AE1ED8AAF100FB7C22 /* TabBarViewController.storyboard */; };
+		B18CF9B31ED8AE2A00FB7C22 /* UIViewController+Utils.swift in Sources */ = {isa = PBXBuildFile; fileRef = B18CF9B21ED8AE2A00FB7C22 /* UIViewController+Utils.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -24,6 +25,7 @@
 		B18CF9A91ED8A88300FB7C22 /* Logger.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Logger.swift; sourceTree = "<group>"; };
 		B18CF9AB1ED8AAA200FB7C22 /* TabBarViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TabBarViewController.swift; sourceTree = "<group>"; };
 		B18CF9AE1ED8AAF100FB7C22 /* TabBarViewController.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = TabBarViewController.storyboard; sourceTree = "<group>"; };
+		B18CF9B21ED8AE2A00FB7C22 /* UIViewController+Utils.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIViewController+Utils.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -62,6 +64,7 @@
 				B18CF9A61ED8A82E00FB7C22 /* Views */,
 				B18CF9A51ED8A81B00FB7C22 /* View Controllers */,
 				B18CF9A91ED8A88300FB7C22 /* Logger.swift */,
+				B18CF9B21ED8AE2A00FB7C22 /* UIViewController+Utils.swift */,
 				B18CF9A31ED8A6CE00FB7C22 /* Assets+Launch+Info */,
 			);
 			path = Marvel;
@@ -182,6 +185,7 @@
 			files = (
 				B18CF9901ED8A68700FB7C22 /* AppDelegate.swift in Sources */,
 				B18CF9AC1ED8AAA200FB7C22 /* TabBarViewController.swift in Sources */,
+				B18CF9B31ED8AE2A00FB7C22 /* UIViewController+Utils.swift in Sources */,
 				B18CF9AA1ED8A88300FB7C22 /* Logger.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
