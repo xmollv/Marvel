@@ -9,6 +9,8 @@
 import UIKit
 
 class TabBarViewController: UITabBarController {
+    
+    var dataProvider: DataProvider!
 
     override func viewDidLoad() {
         super.viewDidLoad()
