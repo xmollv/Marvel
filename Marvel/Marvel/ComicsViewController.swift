@@ -14,11 +14,16 @@ class ComicsViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        title = "Comics"
+        configureViewController()
     }
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
+    }
+    
+    private func configureViewController() {
+        view.backgroundColor = Stylesheet.Color.grey1
+        title = "Comics"
     }
 
 }
