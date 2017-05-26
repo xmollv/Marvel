@@ -14,6 +14,7 @@ class ComicsViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        title = "Comics"
     }
 
     override func didReceiveMemoryWarning() {

@@ -16,7 +16,6 @@ class TabBarViewController: UITabBarController {
         let comicsViewController = ComicsViewController.instantiateFrom(storyboard: .ComicsViewController)
         comicsViewController.dataProvider = self.dataProvider
         let navViewController = UINavigationController(rootViewController: comicsViewController)
-        navViewController.tabBarItem = UITabBarItem(title: "Comics", image: nil, selectedImage: nil)
         return navViewController
     }()
 
