@@ -1,5 +1,5 @@
 //
-//  NavigationViewController.swift
+//  ComicsViewController.swift
 //  Marvel
 //
 //  Created by Xavi Moll on 26/05/2017.
@@ -8,12 +8,13 @@
 
 import UIKit
 
-class NavigationViewController: UINavigationController {
+class ComicsViewController: UIViewController {
     
     var dataProvider: DataProvider!
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        self.view.backgroundColor = UIColor.red
     }
 
     override func didReceiveMemoryWarning() {

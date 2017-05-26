@@ -15,8 +15,8 @@
 		B18CF9AF1ED8AAF100FB7C22 /* TabBarViewController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B18CF9AE1ED8AAF100FB7C22 /* TabBarViewController.storyboard */; };
 		B18CF9B31ED8AE2A00FB7C22 /* UIViewController+Utils.swift in Sources */ = {isa = PBXBuildFile; fileRef = B18CF9B21ED8AE2A00FB7C22 /* UIViewController+Utils.swift */; };
 		B18CF9B51ED8B0BE00FB7C22 /* DataProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = B18CF9B41ED8B0BE00FB7C22 /* DataProvider.swift */; };
-		B18CF9B81ED8B4B500FB7C22 /* NavigationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B18CF9B71ED8B4B500FB7C22 /* NavigationViewController.swift */; };
-		B18CF9BA1ED8B4D100FB7C22 /* NavigationViewController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B18CF9B91ED8B4D100FB7C22 /* NavigationViewController.storyboard */; };
+		B18CF9BC1ED8B85100FB7C22 /* ComicsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B18CF9BB1ED8B85100FB7C22 /* ComicsViewController.swift */; };
+		B18CF9BE1ED8B86600FB7C22 /* ComicsViewController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B18CF9BD1ED8B86600FB7C22 /* ComicsViewController.storyboard */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -30,8 +30,8 @@
 		B18CF9AE1ED8AAF100FB7C22 /* TabBarViewController.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = TabBarViewController.storyboard; sourceTree = "<group>"; };
 		B18CF9B21ED8AE2A00FB7C22 /* UIViewController+Utils.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIViewController+Utils.swift"; sourceTree = "<group>"; };
 		B18CF9B41ED8B0BE00FB7C22 /* DataProvider.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DataProvider.swift; sourceTree = "<group>"; };
-		B18CF9B71ED8B4B500FB7C22 /* NavigationViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NavigationViewController.swift; sourceTree = "<group>"; };
-		B18CF9B91ED8B4D100FB7C22 /* NavigationViewController.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = NavigationViewController.storyboard; sourceTree = "<group>"; };
+		B18CF9BB1ED8B85100FB7C22 /* ComicsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ComicsViewController.swift; sourceTree = "<group>"; };
+		B18CF9BD1ED8B86600FB7C22 /* ComicsViewController.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = ComicsViewController.storyboard; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -98,7 +98,7 @@
 			children = (
 				B18CF9AB1ED8AAA200FB7C22 /* TabBarViewController.swift */,
 				B18CF9AE1ED8AAF100FB7C22 /* TabBarViewController.storyboard */,
-				B18CF9B61ED8B48800FB7C22 /* NavigationViewController */,
+				B18CF9BF1ED8B9B400FB7C22 /* ComicsViewController */,
 			);
 			name = "View Controllers";
 			sourceTree = "<group>";
@@ -118,13 +118,13 @@
 			name = "Data Provider";
 			sourceTree = "<group>";
 		};
-		B18CF9B61ED8B48800FB7C22 /* NavigationViewController */ = {
+		B18CF9BF1ED8B9B400FB7C22 /* ComicsViewController */ = {
 			isa = PBXGroup;
 			children = (
-				B18CF9B71ED8B4B500FB7C22 /* NavigationViewController.swift */,
-				B18CF9B91ED8B4D100FB7C22 /* NavigationViewController.storyboard */,
+				B18CF9BB1ED8B85100FB7C22 /* ComicsViewController.swift */,
+				B18CF9BD1ED8B86600FB7C22 /* ComicsViewController.storyboard */,
 			);
-			name = NavigationViewController;
+			name = ComicsViewController;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -188,7 +188,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				B18CF9AF1ED8AAF100FB7C22 /* TabBarViewController.storyboard in Resources */,
-				B18CF9BA1ED8B4D100FB7C22 /* NavigationViewController.storyboard in Resources */,
+				B18CF9BE1ED8B86600FB7C22 /* ComicsViewController.storyboard in Resources */,
 				B18CF99C1ED8A68700FB7C22 /* LaunchScreen.storyboard in Resources */,
 				B18CF9991ED8A68700FB7C22 /* Assets.xcassets in Resources */,
 			);
@@ -201,9 +201,9 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				B18CF9B81ED8B4B500FB7C22 /* NavigationViewController.swift in Sources */,
 				B18CF9901ED8A68700FB7C22 /* AppDelegate.swift in Sources */,
 				B18CF9AC1ED8AAA200FB7C22 /* TabBarViewController.swift in Sources */,
+				B18CF9BC1ED8B85100FB7C22 /* ComicsViewController.swift in Sources */,
 				B18CF9B51ED8B0BE00FB7C22 /* DataProvider.swift in Sources */,
 				B18CF9B31ED8AE2A00FB7C22 /* UIViewController+Utils.swift in Sources */,
 				B18CF9AA1ED8A88300FB7C22 /* Logger.swift in Sources */,
