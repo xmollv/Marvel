@@ -15,8 +15,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     var dataProvider: DataProvider!
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
-        // Override point for customization after application launch.
-        
         // Create the one and only instance of dataProvider that must be passed to every class that needs it
         // I'm trying to mock dependency injection here by using an IUO on every view controller,
         // because we don't have dependency injection if we instantiate our view controllers from IB.
