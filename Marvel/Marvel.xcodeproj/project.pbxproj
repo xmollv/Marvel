@@ -11,6 +11,8 @@
 		B18CF9991ED8A68700FB7C22 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = B18CF9981ED8A68700FB7C22 /* Assets.xcassets */; };
 		B18CF99C1ED8A68700FB7C22 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B18CF99A1ED8A68700FB7C22 /* LaunchScreen.storyboard */; };
 		B18CF9AA1ED8A88300FB7C22 /* Logger.swift in Sources */ = {isa = PBXBuildFile; fileRef = B18CF9A91ED8A88300FB7C22 /* Logger.swift */; };
+		B18CF9AC1ED8AAA200FB7C22 /* TabBarViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B18CF9AB1ED8AAA200FB7C22 /* TabBarViewController.swift */; };
+		B18CF9AF1ED8AAF100FB7C22 /* TabBarViewController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B18CF9AE1ED8AAF100FB7C22 /* TabBarViewController.storyboard */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -20,6 +22,8 @@
 		B18CF99B1ED8A68700FB7C22 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		B18CF99D1ED8A68700FB7C22 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		B18CF9A91ED8A88300FB7C22 /* Logger.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Logger.swift; sourceTree = "<group>"; };
+		B18CF9AB1ED8AAA200FB7C22 /* TabBarViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TabBarViewController.swift; sourceTree = "<group>"; };
+		B18CF9AE1ED8AAF100FB7C22 /* TabBarViewController.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = TabBarViewController.storyboard; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -83,6 +87,8 @@
 		B18CF9A51ED8A81B00FB7C22 /* View Controllers */ = {
 			isa = PBXGroup;
 			children = (
+				B18CF9AB1ED8AAA200FB7C22 /* TabBarViewController.swift */,
+				B18CF9AE1ED8AAF100FB7C22 /* TabBarViewController.storyboard */,
 			);
 			name = "View Controllers";
 			sourceTree = "<group>";
@@ -161,6 +167,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				B18CF9AF1ED8AAF100FB7C22 /* TabBarViewController.storyboard in Resources */,
 				B18CF99C1ED8A68700FB7C22 /* LaunchScreen.storyboard in Resources */,
 				B18CF9991ED8A68700FB7C22 /* Assets.xcassets in Resources */,
 			);
@@ -174,6 +181,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				B18CF9901ED8A68700FB7C22 /* AppDelegate.swift in Sources */,
+				B18CF9AC1ED8AAA200FB7C22 /* TabBarViewController.swift in Sources */,
 				B18CF9AA1ED8A88300FB7C22 /* Logger.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
