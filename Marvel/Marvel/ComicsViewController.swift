@@ -45,8 +45,7 @@ extension ComicsViewController: UICollectionViewDataSource {
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "ComicsCell", for: indexPath)
-        cell.backgroundColor = UIColor.red
+        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "ComicsCell", for: indexPath) as! ComicsCell
         return cell
     }
 }
@@ -65,7 +64,7 @@ extension ComicsViewController: UICollectionViewDelegateFlowLayout {
         let collectionViewWidthMinusCellSpacing = collectionViewWidthMinusInsets - (cellSpacing * (cellsForRow - 1))
         let widthCell = collectionViewWidthMinusCellSpacing / cellsForRow
         
-        let sizeToReturn = CGSize(width: widthCell, height: 200)
+        let sizeToReturn = CGSize(width: widthCell, height: 300)
         return sizeToReturn
     }
 }
