@@ -63,7 +63,17 @@ extension ComicsViewController: UICollectionViewDataSource {
             collectionView.backgroundView = activityIndicator
             return 0
         }
-        collectionView.backgroundView = nil
+        
+        if comicsCount == 0 {
+            let label = UILabel()
+            label.textAlignment = .center
+            label.font = UIFont.systemFont(ofSize: 10)
+            label.text = "No comics found."
+            collectionView.backgroundView = label
+        } else {
+            collectionView.backgroundView = nil
+        }
+        
         return comicsCount
     }
     

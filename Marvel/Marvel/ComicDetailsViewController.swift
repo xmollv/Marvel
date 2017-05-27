@@ -21,6 +21,7 @@ class ComicDetailsViewController: UIViewController {
     
     var dataProvider: DataProvider!
     var comic: Comic!
+    let charactersDataSource = ComicCharactersDataSource()
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -50,6 +51,13 @@ class ComicDetailsViewController: UIViewController {
         charactersLabel.font = UIFont.boldSystemFont(ofSize: 14)
         creatorsLabel.text = "CREATORS"
         charactersLabel.text = "CHARACTERS"
+        charactersCollectionView.dataSource = charactersDataSource
+        charactersCollectionView.backgroundColor = Stylesheet.Color.clear
+        // Let the cells scroll to the edge of the screen
+        charactersCollectionView.clipsToBounds = false
+        charactersCollectionView.showsHorizontalScrollIndicator = false
+        // This enables the bounce even though there is only one item in the collection
+        charactersCollectionView.alwaysBounceHorizontal = true
     }
     
     private func setupComicDetails(comic: Comic) {
@@ -65,7 +73,10 @@ class ComicDetailsViewController: UIViewController {
         dataProvider.getComicCharacters(comicId: comicId) { [weak weakSelf = self] result in
             switch result {
             case .isSuccess(let characters):
-                dump(characters)
+                DispatchQueue.main.async {
+                    weakSelf?.charactersDataSource.updateCharacters(characters: characters)
+                    weakSelf?.charactersCollectionView.reloadData()
+                }
             case .isFailure(let error):
                 dump(error)
             }

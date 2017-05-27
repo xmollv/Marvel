@@ -77,20 +77,34 @@
                                                         <constraints>
                                                             <constraint firstAttribute="height" constant="80" id="o4B-ac-8W5"/>
                                                         </constraints>
-                                                        <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="bo4-pg-LdO">
-                                                            <size key="itemSize" width="50" height="50"/>
+                                                        <collectionViewFlowLayout key="collectionViewLayout" scrollDirection="horizontal" minimumLineSpacing="10" minimumInteritemSpacing="10" id="bo4-pg-LdO">
+                                                            <size key="itemSize" width="80" height="80"/>
                                                             <size key="headerReferenceSize" width="0.0" height="0.0"/>
                                                             <size key="footerReferenceSize" width="0.0" height="0.0"/>
                                                             <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
                                                         </collectionViewFlowLayout>
                                                         <cells>
-                                                            <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" id="nij-qD-RWv">
-                                                                <rect key="frame" x="0.0" y="0.0" width="50" height="50"/>
+                                                            <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="ComicCharacterCell" id="nij-qD-RWv" customClass="ComicCharacterCell" customModule="Marvel" customModuleProvider="target">
+                                                                <rect key="frame" x="0.0" y="0.0" width="80" height="80"/>
                                                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                                 <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
-                                                                    <rect key="frame" x="0.0" y="0.0" width="50" height="50"/>
+                                                                    <rect key="frame" x="0.0" y="0.0" width="80" height="80"/>
                                                                     <autoresizingMask key="autoresizingMask"/>
+                                                                    <subviews>
+                                                                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="Jt8-5M-yQP">
+                                                                            <rect key="frame" x="0.0" y="0.0" width="80" height="80"/>
+                                                                        </imageView>
+                                                                    </subviews>
                                                                 </view>
+                                                                <constraints>
+                                                                    <constraint firstAttribute="trailing" secondItem="Jt8-5M-yQP" secondAttribute="trailing" id="Rjq-JK-IEI"/>
+                                                                    <constraint firstItem="Jt8-5M-yQP" firstAttribute="leading" secondItem="nij-qD-RWv" secondAttribute="leading" id="T4n-RG-rVI"/>
+                                                                    <constraint firstAttribute="bottom" secondItem="Jt8-5M-yQP" secondAttribute="bottom" id="fOQ-Ji-W2h"/>
+                                                                    <constraint firstItem="Jt8-5M-yQP" firstAttribute="top" secondItem="nij-qD-RWv" secondAttribute="top" id="v6h-NR-sBp"/>
+                                                                </constraints>
+                                                                <connections>
+                                                                    <outlet property="characterImageView" destination="Jt8-5M-yQP" id="uge-TY-AMG"/>
+                                                                </connections>
                                                             </collectionViewCell>
                                                         </cells>
                                                     </collectionView>
