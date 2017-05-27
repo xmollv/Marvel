@@ -17,6 +17,8 @@ class ComicCreatorCell: UITableViewCell {
         super.awakeFromNib()
         backgroundColor = Stylesheet.Color.clear
         creatorLabel.font = UIFont.systemFont(ofSize: 14)
+        // Disable the interaction to avoid the selected state for now
+        isUserInteractionEnabled = false
         clearCell()
     }
     
