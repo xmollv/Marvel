@@ -13,10 +13,25 @@ class ComicsViewController: UIViewController {
     @IBOutlet var collectionView: UICollectionView!
     
     var dataProvider: DataProvider!
+    var comics: [Comic]?
 
     override func viewDidLoad() {
         super.viewDidLoad()
         configureViewController()
+        
+        dataProvider.getComics { [weak weakSelf = self] result in
+            switch result {
+            case .isSuccess(let comics):
+                weakSelf?.comics = []
+                comics?.forEach({ weakSelf?.comics?.append($0) })
+            case .isFailure(let error):
+                dump(error)
+            }
+            
+            DispatchQueue.main.async {
+                weakSelf?.collectionView.reloadData()
+            }
+        }
     }
 
     override func didReceiveMemoryWarning() {
@@ -41,11 +56,21 @@ class ComicsViewController: UIViewController {
 
 extension ComicsViewController: UICollectionViewDataSource {
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return 10
+        guard let comicsCount = comics?.count else {
+            let activityIndicator = UIActivityIndicatorView(activityIndicatorStyle: .gray)
+            activityIndicator.startAnimating()
+            activityIndicator.hidesWhenStopped = true
+            collectionView.backgroundView = activityIndicator
+            return 0
+        }
+        collectionView.backgroundView = nil
+        return comicsCount
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+        guard let comic = comics?[indexPath.row] else { return UICollectionViewCell() }
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "ComicsCell", for: indexPath) as! ComicsCell
+        cell.configure(with: comic)
         return cell
     }
 }

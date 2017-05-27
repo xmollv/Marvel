@@ -19,6 +19,7 @@ class ComicsCell: UICollectionViewCell {
         isOpaque = true
         contentView.backgroundColor = Stylesheet.Color.white
         comicImageView.contentMode = .scaleAspectFill
+        comicImageView.clipsToBounds = true
         comicTitleLabel.textAlignment = .center
         comicTitleLabel.font = UIFont.systemFont(ofSize: 14)
         clearCell()
@@ -32,5 +33,10 @@ class ComicsCell: UICollectionViewCell {
     private func clearCell() {
         comicImageView.image = nil
         comicTitleLabel.text = nil
+    }
+    
+    func configure(with comic: Comic) {
+        comicImageView.sd_setImage(with: URL(string: comic.thumbnail ?? ""))
+        comicTitleLabel.text = comic.title ?? "Unknown"
     }
 }
