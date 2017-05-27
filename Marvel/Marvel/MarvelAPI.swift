@@ -132,5 +132,9 @@ final class MarvelAPI {
         }
     }
     
-    
+    func getComicCharacters(comicId: Int, completion: @escaping CompletionType<Any?>) {
+        load(url: "\(MarvelAPIConfig.baseUrl)/comics/\(comicId)/characters?ts=\(MarvelAPIConfig.timestamp)&apikey=\(MarvelAPIConfig.apiKey)&hash=\(MarvelAPIConfig.hash)") { networkResult in
+            completion(self.parseResponse(networkResult: networkResult))
+        }
+    }
 }

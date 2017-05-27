@@ -29,4 +29,20 @@ final class DataProvider {
         }
     }
     
+    func getComicCharacters(comicId: Int, completion: @escaping CompletionType<[ComicCharacter]?>) {
+        marvelAPI.getComicCharacters(comicId: comicId) { result in
+            switch result {
+            case .isSuccess(let json):
+                guard let json = json as? JSONDictionary, let data = json["data"] as? JSONDictionary, let results = data["results"] as? JSONArray else {
+                    completion(Result.isFailure(MarvelError.malformedJSON))
+                    return
+                }
+                let characters = results.flatMap{ ComicCharacter(dict: $0) }
+                completion(Result.isSuccess(characters))
+            case .isFailure(let error):
+                completion(Result.isFailure(error))
+            }
+        }
+    }
+    
 }

@@ -14,8 +14,6 @@ struct Comic {
     let description: String?
     let pageCount: Int?
     let thumbnail: String?
-    let characters: [ComicCharacter]?
-    let creators: [Creator]?
     
     init?(dict: JSONDictionary) {
         if let id = dict["id"] as? Int { self.id = id } else { self.id = nil }
@@ -31,7 +29,5 @@ struct Comic {
         } else {
             self.thumbnail = nil
         }
-        self.characters = nil
-        self.creators = nil
     }
 }

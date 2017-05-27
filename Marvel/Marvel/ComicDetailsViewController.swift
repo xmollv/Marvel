@@ -56,6 +56,20 @@ class ComicDetailsViewController: UIViewController {
         title = comic.title ?? "Unknown"
         comicImageView.sd_setImage(with: URL(string: comic.thumbnail ?? ""))
         comicDescriptionTextView.text = comic.description ?? "Description not found."
+        setupComicCharacters(comicId: comic.id)
+    }
+    
+    private func setupComicCharacters(comicId: Int?) {
+        guard let comicId = comicId else { Logger.log(message: "The comic ID was nil", event: .warning); return }
+        
+        dataProvider.getComicCharacters(comicId: comicId) { [weak weakSelf = self] result in
+            switch result {
+            case .isSuccess(let characters):
+                dump(characters)
+            case .isFailure(let error):
+                dump(error)
+            }
+        }
     }
 
 }
