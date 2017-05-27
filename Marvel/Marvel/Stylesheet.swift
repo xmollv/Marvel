@@ -14,6 +14,7 @@ struct Stylesheet {
     struct Color {
         static var grey1: UIColor { return UIColor(red: 244/255, green: 244/255, blue: 244/255, alpha: 1) }
         static var white: UIColor { return UIColor.white }
+        static var clear: UIColor { return UIColor.clear }
     }
 
 }

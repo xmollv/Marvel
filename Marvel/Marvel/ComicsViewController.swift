@@ -99,6 +99,7 @@ extension ComicsViewController: UICollectionViewDelegate {
         Logger.log(message: "Tapped: \(indexPath.row)", event: .debug)
         let detailViewController = ComicDetailsViewController.instantiateFrom(storyboard: .ComicDetailsViewController)
         detailViewController.dataProvider = dataProvider
+        detailViewController.comic = comics?[indexPath.row]
         navigationController?.pushViewController(detailViewController, animated: true)
     }
 }
