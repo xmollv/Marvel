@@ -10,4 +10,6 @@ import Foundation
 
 final class DataProvider {
     
+    let marvelAPI = MarvelAPI()
+    
 }
