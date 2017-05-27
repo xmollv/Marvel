@@ -127,7 +127,7 @@ final class MarvelAPI {
     // Convinience methods
     //MARK:- Get Comics
     func getComics(completion: @escaping CompletionType<Any?>) {
-        load(url: "\(MarvelAPIConfig.baseUrl)/comics?ts=\(MarvelAPIConfig.timestamp)&apikey=\(MarvelAPIConfig.apiKey)&hash=\(MarvelAPIConfig.hash)") { networkResult in
+        load(url: "\(MarvelAPIConfig.baseUrl)/comics?ts=\(MarvelAPIConfig.timestamp)&apikey=\(MarvelAPIConfig.apiKey)&hash=\(MarvelAPIConfig.hash)&limit=100") { networkResult in
             completion(self.parseResponse(networkResult: networkResult))
         }
     }
