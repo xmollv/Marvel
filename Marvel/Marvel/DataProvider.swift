@@ -45,4 +45,20 @@ final class DataProvider {
         }
     }
     
+    func getComicCreators(comicId: Int, completion: @escaping CompletionType<[Creator]?>) {
+        marvelAPI.getComicCreators(comicId: comicId) { result in
+            switch result {
+            case .isSuccess(let json):
+                guard let json = json as? JSONDictionary, let data = json["data"] as? JSONDictionary, let results = data["results"] as? JSONArray else {
+                    completion(Result.isFailure(MarvelError.malformedJSON))
+                    return
+                }
+                let creators = results.flatMap{ Creator(dict: $0) }
+                completion(Result.isSuccess(creators))
+            case .isFailure(let error):
+                completion(Result.isFailure(error))
+            }
+        }
+    }
+    
 }

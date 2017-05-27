@@ -137,4 +137,10 @@ final class MarvelAPI {
             completion(self.parseResponse(networkResult: networkResult))
         }
     }
+    
+    func getComicCreators(comicId: Int, completion: @escaping CompletionType<Any?>) {
+        load(url: "\(MarvelAPIConfig.baseUrl)/comics/\(comicId)/creators?ts=\(MarvelAPIConfig.timestamp)&apikey=\(MarvelAPIConfig.apiKey)&hash=\(MarvelAPIConfig.hash)") { networkResult in
+            completion(self.parseResponse(networkResult: networkResult))
+        }
+    }
 }

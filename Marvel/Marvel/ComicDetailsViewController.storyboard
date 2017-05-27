@@ -6,6 +6,7 @@
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="12088"/>
+        <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
@@ -42,9 +43,37 @@
                                                                 <nil key="textColor"/>
                                                                 <nil key="highlightedColor"/>
                                                             </label>
-                                                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="N9H-2P-Old">
+                                                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="none" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="N9H-2P-Old">
                                                                 <rect key="frame" x="0.0" y="25.5" width="172.5" height="214.5"/>
                                                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                                                <prototypes>
+                                                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="ComicCreatorCell" id="ES4-Kf-dFL" customClass="ComicCreatorCell" customModule="Marvel" customModuleProvider="target">
+                                                                        <rect key="frame" x="0.0" y="28" width="172.5" height="44"/>
+                                                                        <autoresizingMask key="autoresizingMask"/>
+                                                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="ES4-Kf-dFL" id="F3l-4G-3Iq">
+                                                                            <rect key="frame" x="0.0" y="0.0" width="172.5" height="44"/>
+                                                                            <autoresizingMask key="autoresizingMask"/>
+                                                                            <subviews>
+                                                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" horizontalCompressionResistancePriority="1000" verticalCompressionResistancePriority="1000" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="fwZ-pI-tSh">
+                                                                                    <rect key="frame" x="0.0" y="8" width="172.5" height="27.5"/>
+                                                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                                                    <nil key="textColor"/>
+                                                                                    <nil key="highlightedColor"/>
+                                                                                </label>
+                                                                            </subviews>
+                                                                            <constraints>
+                                                                                <constraint firstItem="fwZ-pI-tSh" firstAttribute="leading" secondItem="F3l-4G-3Iq" secondAttribute="leading" id="GIk-Rh-sBn"/>
+                                                                                <constraint firstItem="fwZ-pI-tSh" firstAttribute="top" secondItem="F3l-4G-3Iq" secondAttribute="topMargin" id="adn-fl-YtR"/>
+                                                                                <constraint firstAttribute="bottomMargin" secondItem="fwZ-pI-tSh" secondAttribute="bottom" id="bi3-Hg-QFR"/>
+                                                                                <constraint firstAttribute="trailing" secondItem="fwZ-pI-tSh" secondAttribute="trailing" id="tpm-9c-bR8"/>
+                                                                            </constraints>
+                                                                        </tableViewCellContentView>
+                                                                        <inset key="separatorInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
+                                                                        <connections>
+                                                                            <outlet property="creatorLabel" destination="fwZ-pI-tSh" id="N3S-F9-zIS"/>
+                                                                        </connections>
+                                                                    </tableViewCell>
+                                                                </prototypes>
                                                             </tableView>
                                                         </subviews>
                                                     </stackView>

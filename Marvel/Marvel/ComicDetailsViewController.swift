@@ -22,6 +22,7 @@ class ComicDetailsViewController: UIViewController {
     var dataProvider: DataProvider!
     var comic: Comic!
     let charactersDataSource = ComicCharactersDataSource()
+    let creatorsDataSource = ComicCreatorsDataSource()
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -49,7 +50,7 @@ class ComicDetailsViewController: UIViewController {
         
         creatorsLabel.font = UIFont.boldSystemFont(ofSize: 14)
         charactersLabel.font = UIFont.boldSystemFont(ofSize: 14)
-        creatorsLabel.text = "CREATORS"
+
         charactersLabel.text = "CHARACTERS"
         charactersCollectionView.dataSource = charactersDataSource
         charactersCollectionView.backgroundColor = Stylesheet.Color.clear
@@ -58,6 +59,10 @@ class ComicDetailsViewController: UIViewController {
         charactersCollectionView.showsHorizontalScrollIndicator = false
         // This enables the bounce even though there is only one item in the collection
         charactersCollectionView.alwaysBounceHorizontal = true
+        
+        creatorsLabel.text = "CREATORS"
+        creatorsTableView.dataSource = creatorsDataSource
+        creatorsTableView.backgroundColor = Stylesheet.Color.clear
     }
     
     private func setupComicDetails(comic: Comic) {
@@ -65,6 +70,7 @@ class ComicDetailsViewController: UIViewController {
         comicImageView.sd_setImage(with: URL(string: comic.thumbnail ?? ""))
         comicDescriptionTextView.text = comic.description ?? "Description not found."
         setupComicCharacters(comicId: comic.id)
+        setupComicCreators(comicId: comic.id)
     }
     
     private func setupComicCharacters(comicId: Int?) {
@@ -76,6 +82,22 @@ class ComicDetailsViewController: UIViewController {
                 DispatchQueue.main.async {
                     weakSelf?.charactersDataSource.updateCharacters(characters: characters)
                     weakSelf?.charactersCollectionView.reloadData()
+                }
+            case .isFailure(let error):
+                dump(error)
+            }
+        }
+    }
+    
+    private func setupComicCreators(comicId: Int?) {
+        guard let comicId = comicId else { Logger.log(message: "The comic ID was nil", event: .warning); return }
+        
+        dataProvider.getComicCreators(comicId: comicId) { [weak weakSelf = self] result in
+            switch result {
+            case .isSuccess(let creators):
+                DispatchQueue.main.async {
+                    weakSelf?.creatorsDataSource.updateCreators(creators: creators)
+                    weakSelf?.creatorsTableView.reloadData()
                 }
             case .isFailure(let error):
                 dump(error)
