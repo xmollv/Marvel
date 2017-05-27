@@ -13,6 +13,7 @@ enum MarvelStoryboard: String {
     // The cases of this enum start with a capital letter to match the name of the .storyboard when using its rawValue
     case TabBarViewController
     case ComicsViewController
+    case ComicDetailsViewController
 }
 
 extension UIViewController {

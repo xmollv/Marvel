@@ -73,5 +73,8 @@ extension ComicsViewController: UICollectionViewDelegateFlowLayout {
 extension ComicsViewController: UICollectionViewDelegate {
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         Logger.log(message: "Tapped: \(indexPath.row)", event: .debug)
+        let detailViewController = ComicDetailsViewController.instantiateFrom(storyboard: .ComicDetailsViewController)
+        detailViewController.dataProvider = dataProvider
+        navigationController?.pushViewController(detailViewController, animated: true)
     }
 }

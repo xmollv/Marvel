@@ -18,6 +18,8 @@
 		B18CF9BC1ED8B85100FB7C22 /* ComicsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B18CF9BB1ED8B85100FB7C22 /* ComicsViewController.swift */; };
 		B18CF9BE1ED8B86600FB7C22 /* ComicsViewController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B18CF9BD1ED8B86600FB7C22 /* ComicsViewController.storyboard */; };
 		B18CF9C11ED8BDB200FB7C22 /* Stylesheet.swift in Sources */ = {isa = PBXBuildFile; fileRef = B18CF9C01ED8BDB200FB7C22 /* Stylesheet.swift */; };
+		B18CF9C51ED98FDD00FB7C22 /* ComicDetailsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B18CF9C41ED98FDD00FB7C22 /* ComicDetailsViewController.swift */; };
+		B18CF9C71ED98FF200FB7C22 /* ComicDetailsViewController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B18CF9C61ED98FF200FB7C22 /* ComicDetailsViewController.storyboard */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -34,6 +36,8 @@
 		B18CF9BB1ED8B85100FB7C22 /* ComicsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ComicsViewController.swift; sourceTree = "<group>"; };
 		B18CF9BD1ED8B86600FB7C22 /* ComicsViewController.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = ComicsViewController.storyboard; sourceTree = "<group>"; };
 		B18CF9C01ED8BDB200FB7C22 /* Stylesheet.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Stylesheet.swift; sourceTree = "<group>"; };
+		B18CF9C41ED98FDD00FB7C22 /* ComicDetailsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ComicDetailsViewController.swift; sourceTree = "<group>"; };
+		B18CF9C61ED98FF200FB7C22 /* ComicDetailsViewController.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = ComicDetailsViewController.storyboard; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -124,6 +128,7 @@
 			children = (
 				B18CF9BB1ED8B85100FB7C22 /* ComicsViewController.swift */,
 				B18CF9BD1ED8B86600FB7C22 /* ComicsViewController.storyboard */,
+				B18CF9C31ED98FC200FB7C22 /* ComicDetailsViewController */,
 			);
 			name = ComicsViewController;
 			sourceTree = "<group>";
@@ -136,6 +141,15 @@
 				B18CF9A91ED8A88300FB7C22 /* Logger.swift */,
 			);
 			name = Helpers;
+			sourceTree = "<group>";
+		};
+		B18CF9C31ED98FC200FB7C22 /* ComicDetailsViewController */ = {
+			isa = PBXGroup;
+			children = (
+				B18CF9C41ED98FDD00FB7C22 /* ComicDetailsViewController.swift */,
+				B18CF9C61ED98FF200FB7C22 /* ComicDetailsViewController.storyboard */,
+			);
+			name = ComicDetailsViewController;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -198,6 +212,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				B18CF9C71ED98FF200FB7C22 /* ComicDetailsViewController.storyboard in Resources */,
 				B18CF9AF1ED8AAF100FB7C22 /* TabBarViewController.storyboard in Resources */,
 				B18CF9BE1ED8B86600FB7C22 /* ComicsViewController.storyboard in Resources */,
 				B18CF99C1ED8A68700FB7C22 /* LaunchScreen.storyboard in Resources */,
@@ -218,6 +233,7 @@
 				B18CF9B51ED8B0BE00FB7C22 /* DataProvider.swift in Sources */,
 				B18CF9C11ED8BDB200FB7C22 /* Stylesheet.swift in Sources */,
 				B18CF9B31ED8AE2A00FB7C22 /* UIViewController+Utils.swift in Sources */,
+				B18CF9C51ED98FDD00FB7C22 /* ComicDetailsViewController.swift in Sources */,
 				B18CF9AA1ED8A88300FB7C22 /* Logger.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
