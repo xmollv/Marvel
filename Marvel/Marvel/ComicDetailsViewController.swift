@@ -15,6 +15,10 @@ class ComicDetailsViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         configureViewController()
+        
+        MarvelAPI().getComics { (result) in
+            dump(result)
+        }
     }
 
     override func didReceiveMemoryWarning() {

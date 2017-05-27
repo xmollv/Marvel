@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		B15C2A681ED9AAC100ADC0C7 /* MarvelAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = B15C2A671ED9AAC100ADC0C7 /* MarvelAPI.swift */; };
+		B15C2A6A1ED9AD9100ADC0C7 /* MarvelError.swift in Sources */ = {isa = PBXBuildFile; fileRef = B15C2A691ED9AD9100ADC0C7 /* MarvelError.swift */; };
 		B18CF9901ED8A68700FB7C22 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = B18CF98F1ED8A68700FB7C22 /* AppDelegate.swift */; };
 		B18CF9991ED8A68700FB7C22 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = B18CF9981ED8A68700FB7C22 /* Assets.xcassets */; };
 		B18CF99C1ED8A68700FB7C22 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B18CF99A1ED8A68700FB7C22 /* LaunchScreen.storyboard */; };
@@ -29,6 +30,7 @@
 		038CF980A707C82B2A3572E6 /* Pods_Marvel.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Marvel.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		0C6A62481A7D0939BB15FD70 /* Pods-Marvel.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Marvel.release.xcconfig"; path = "Pods/Target Support Files/Pods-Marvel/Pods-Marvel.release.xcconfig"; sourceTree = "<group>"; };
 		B15C2A671ED9AAC100ADC0C7 /* MarvelAPI.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MarvelAPI.swift; sourceTree = "<group>"; };
+		B15C2A691ED9AD9100ADC0C7 /* MarvelError.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MarvelError.swift; sourceTree = "<group>"; };
 		B18CF98C1ED8A68700FB7C22 /* Marvel.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Marvel.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		B18CF98F1ED8A68700FB7C22 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		B18CF9981ED8A68700FB7C22 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -169,6 +171,7 @@
 				B18CF9B21ED8AE2A00FB7C22 /* UIViewController+Utils.swift */,
 				B18CF9C01ED8BDB200FB7C22 /* Stylesheet.swift */,
 				B18CF9A91ED8A88300FB7C22 /* Logger.swift */,
+				B15C2A691ED9AD9100ADC0C7 /* MarvelError.swift */,
 			);
 			name = Helpers;
 			sourceTree = "<group>";
@@ -316,6 +319,7 @@
 				B15C2A681ED9AAC100ADC0C7 /* MarvelAPI.swift in Sources */,
 				B18CF9B31ED8AE2A00FB7C22 /* UIViewController+Utils.swift in Sources */,
 				B18CF9C91ED9923600FB7C22 /* ComicsCell.swift in Sources */,
+				B15C2A6A1ED9AD9100ADC0C7 /* MarvelError.swift in Sources */,
 				B18CF9C51ED98FDD00FB7C22 /* ComicDetailsViewController.swift in Sources */,
 				B18CF9AA1ED8A88300FB7C22 /* Logger.swift in Sources */,
 			);
