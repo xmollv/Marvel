@@ -64,7 +64,7 @@ extension ComicsViewController: UICollectionViewDelegateFlowLayout {
         let collectionViewWidthMinusCellSpacing = collectionViewWidthMinusInsets - (cellSpacing * (cellsForRow - 1))
         let widthCell = collectionViewWidthMinusCellSpacing / cellsForRow
         
-        let sizeToReturn = CGSize(width: widthCell, height: 300)
+        let sizeToReturn = CGSize(width: widthCell, height: 280)
         return sizeToReturn
     }
 }

@@ -33,17 +33,18 @@
                                 </collectionViewFlowLayout>
                                 <cells>
                                     <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="ComicsCell" id="tvV-gG-dE7" customClass="ComicsCell" customModule="Marvel" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="0.0" width="145" height="200"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="172.5" height="280"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
-                                            <rect key="frame" x="0.0" y="0.0" width="145" height="200"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="173" height="280"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="YSB-Fj-nfR">
-                                                    <rect key="frame" x="0.0" y="0.0" width="145" height="171"/>
+                                                    <rect key="frame" x="0.0" y="0.0" width="172.5" height="243"/>
+                                                    <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                                 </imageView>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="vhq-bD-ga5">
-                                                    <rect key="frame" x="8" y="171" width="129" height="21"/>
+                                                    <rect key="frame" x="8" y="251" width="156.5" height="21"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
@@ -54,12 +55,12 @@
                                             <constraint firstAttribute="trailing" secondItem="YSB-Fj-nfR" secondAttribute="trailing" id="9uC-xn-4mu"/>
                                             <constraint firstAttribute="trailingMargin" secondItem="vhq-bD-ga5" secondAttribute="trailing" id="EAI-ih-wbU"/>
                                             <constraint firstItem="YSB-Fj-nfR" firstAttribute="top" secondItem="tvV-gG-dE7" secondAttribute="top" id="KsN-P3-Cla"/>
-                                            <constraint firstItem="vhq-bD-ga5" firstAttribute="top" secondItem="YSB-Fj-nfR" secondAttribute="bottom" id="Nje-KX-lLi"/>
+                                            <constraint firstItem="vhq-bD-ga5" firstAttribute="top" secondItem="YSB-Fj-nfR" secondAttribute="bottom" constant="8" id="Nje-KX-lLi"/>
+                                            <constraint firstAttribute="bottom" secondItem="vhq-bD-ga5" secondAttribute="bottom" constant="8" id="XVJ-Ir-t96"/>
                                             <constraint firstItem="YSB-Fj-nfR" firstAttribute="leading" secondItem="tvV-gG-dE7" secondAttribute="leading" id="iXW-nJ-DUe"/>
-                                            <constraint firstAttribute="bottomMargin" secondItem="vhq-bD-ga5" secondAttribute="bottom" id="l1m-Wa-qlr"/>
                                             <constraint firstItem="vhq-bD-ga5" firstAttribute="leading" secondItem="tvV-gG-dE7" secondAttribute="leadingMargin" id="qcN-H9-Z2k"/>
                                         </constraints>
-                                        <size key="customSize" width="145" height="200"/>
+                                        <size key="customSize" width="172.5" height="280"/>
                                         <connections>
                                             <outlet property="comicImageView" destination="YSB-Fj-nfR" id="uVV-K4-6eM"/>
                                             <outlet property="comicTitleLabel" destination="vhq-bD-ga5" id="r8b-oD-dgd"/>
