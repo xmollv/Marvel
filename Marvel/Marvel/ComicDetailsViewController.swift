@@ -39,11 +39,15 @@ class ComicDetailsViewController: UIViewController {
         comicImageView.contentMode = .scaleAspectFill
         comicImageView.clipsToBounds = true
         comicImageView.layer.cornerRadius = 2
+        
         comicDescriptionTextView.textAlignment = .justified
         comicDescriptionTextView.backgroundColor = Stylesheet.Color.clear
+        // This fixes the unwanted padding in the UITextViews: https://stackoverflow.com/a/42333832/5683397
+        comicDescriptionTextView.textContainerInset = UIEdgeInsets.zero
+        comicDescriptionTextView.textContainer.lineFragmentPadding = 0
+        
         creatorsLabel.font = UIFont.boldSystemFont(ofSize: 14)
         charactersLabel.font = UIFont.boldSystemFont(ofSize: 14)
-        
         creatorsLabel.text = "CREATORS"
         charactersLabel.text = "CHARACTERS"
     }
