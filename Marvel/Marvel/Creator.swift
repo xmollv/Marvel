@@ -12,7 +12,9 @@ struct Creator {
     let id: Int?
     let firstName: String?
     let lastName: String?
+}
 
+extension Creator: JSONInitiable {
     init(dict: JSONDictionary) {
         if let id = dict["id"] as? Int { self.id = id } else { self.id = nil }
         if let firstName = dict["firstName"] as? String { self.firstName = firstName } else { self.firstName = nil }

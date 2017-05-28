@@ -8,6 +8,10 @@
 
 import Foundation
 
+protocol JSONInitiable {
+    init?(dict: JSONDictionary)
+}
+
 struct Comic {
     let id: Int?
     let title: String?
@@ -15,6 +19,9 @@ struct Comic {
     let pageCount: Int?
     let thumbnail: String?
     
+}
+
+extension Comic: JSONInitiable {
     init?(dict: JSONDictionary) {
         if let id = dict["id"] as? Int { self.id = id } else { self.id = nil }
         if let title = dict["title"] as? String { self.title = title } else { self.title = nil }

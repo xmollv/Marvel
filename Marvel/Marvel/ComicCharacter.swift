@@ -12,8 +12,9 @@ struct ComicCharacter {
     let id: Int?
     let name: String?
     let thumbnail: String?
-    
-    
+}
+
+extension ComicCharacter: JSONInitiable {
     init(dict: JSONDictionary) {
         if let id = dict["id"] as? Int { self.id = id } else { self.id = nil }
         if let name = dict["name"] as? String { self.name = name } else { self.name = nil }
@@ -27,5 +28,4 @@ struct ComicCharacter {
             self.thumbnail = nil
         }
     }
-    
 }
