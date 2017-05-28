@@ -11,22 +11,45 @@ import UIKit
 
 class ComicsDataProvider: NSObject, UICollectionViewDataSource {
     
-    private var comics: [Comic]?
+    fileprivate let dataProvider: DataProvider
+    fileprivate var comics: [Comic]?
+    fileprivate var searchResults: [Comic]?
+    var isSearchingComics = false
+    weak var comicsViewController: ComicsViewController? = nil
     
-    override init() {
+    init(in comicsViewController: ComicsViewController, using dataProvider: DataProvider) {
         self.comics = nil
+        self.searchResults = nil
+        self.comicsViewController = comicsViewController
+        self.dataProvider = dataProvider
     }
     
     func updateComics(comics: [Comic]?) {
-        self.comics = comics
+        if isSearchingComics {
+            self.searchResults = comics
+        } else {
+            self.comics = comics
+        }
     }
     
     func comic(at index: Int) -> Comic? {
-        return comics?[index]
+        if isSearchingComics {
+            return searchResults?[index]
+        } else {
+            return comics?[index]
+        }
     }
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        guard let comicsCount = comics?.count else {
+        
+        var optionalComicsCount: Int?
+        if isSearchingComics {
+            optionalComicsCount = searchResults?.count
+        } else {
+            optionalComicsCount = comics?.count
+        }
+        
+        guard let comicsCount = optionalComicsCount else {
             let activityIndicator = UIActivityIndicatorView(activityIndicatorStyle: .gray)
             activityIndicator.startAnimating()
             activityIndicator.hidesWhenStopped = true
@@ -48,7 +71,13 @@ class ComicsDataProvider: NSObject, UICollectionViewDataSource {
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        guard let comic = comics?[indexPath.row] else { return UICollectionViewCell() }
+        var optionalComic: Comic?
+        if isSearchingComics {
+            optionalComic = searchResults?[indexPath.row]
+        } else {
+            optionalComic = comics?[indexPath.row]
+        }
+        guard let comic = optionalComic else { return UICollectionViewCell() }
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "ComicsCell", for: indexPath) as! ComicsCell
         cell.configure(with: comic)
         return cell
@@ -56,25 +85,7 @@ class ComicsDataProvider: NSObject, UICollectionViewDataSource {
     
     func collectionView(_ collectionView: UICollectionView, viewForSupplementaryElementOfKind kind: String, at indexPath: IndexPath) -> UICollectionReusableView {
         let searchBarHeader = collectionView.dequeueReusableSupplementaryView(ofKind: UICollectionElementKindSectionHeader, withReuseIdentifier: "SearchBarComics", for: indexPath) as! SearchBarComicsReusableView
-        searchBarHeader.searchBar.delegate = self
+        searchBarHeader.searchBar.delegate = comicsViewController
         return searchBarHeader
-    }
-}
-
-extension ComicsDataProvider: UISearchBarDelegate {
-    func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
-        print(searchBar.text)
-    }
-    
-    func searchBarCancelButtonClicked(_ searchBar: UISearchBar) {
-        searchBar.resignFirstResponder()
-    }
-    
-    func searchBarTextDidBeginEditing(_ searchBar: UISearchBar) {
-        searchBar.setShowsCancelButton(true, animated: true)
-    }
-    
-    func searchBarTextDidEndEditing(_ searchBar: UISearchBar) {
-        searchBar.setShowsCancelButton(false, animated: true)
     }
 }

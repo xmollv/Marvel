@@ -13,7 +13,7 @@ class ComicsViewController: UIViewController {
     @IBOutlet var collectionView: UICollectionView!
     
     var dataProvider: DataProvider!
-    var comicsCollectionViewDataProvider = ComicsDataProvider()
+    var comicsCollectionViewDataProvider: ComicsDataProvider!
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -47,6 +47,7 @@ class ComicsViewController: UIViewController {
     private func customizeCollectionView() {
         collectionView.backgroundColor = UIColor.clear
         collectionView.delegate = self
+        comicsCollectionViewDataProvider = ComicsDataProvider(in: self, using: self.dataProvider)
         collectionView.dataSource = comicsCollectionViewDataProvider
         collectionView.contentInset = UIEdgeInsetsMake(0, 10, 10, 10)
     }
@@ -78,5 +79,46 @@ extension ComicsViewController: UICollectionViewDelegate {
         detailViewController.dataProvider = dataProvider
         detailViewController.comic = comicsCollectionViewDataProvider.comic(at: indexPath.row)
         navigationController?.pushViewController(detailViewController, animated: true)
+    }
+}
+
+
+extension ComicsViewController: UISearchBarDelegate {
+    func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
+        guard let textQuery = searchBar.text else {
+            searchBar.text = ""
+            searchBar.resignFirstResponder()
+            return
+        }
+        
+        if textQuery.trimmingCharacters(in: .whitespaces) == "" {
+            comicsCollectionViewDataProvider.isSearchingComics = false
+            searchBar.text = ""
+            searchBar.resignFirstResponder()
+            self.collectionView.reloadData()
+        }
+    }
+    
+    func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
+        guard let textQuery = searchBar.text else { return }
+        searchBar.resignFirstResponder()
+        if textQuery.trimmingCharacters(in: .whitespaces) == "" {
+            searchBar.text = ""
+            return
+        }
+        
+        dataProvider.get(MarvelEndpoint.searchComics(query: textQuery)) { [weak weakSelf = self] (result: Result<[Comic]>) in
+            switch result {
+            case .isSuccess(let comics):
+                weakSelf?.comicsCollectionViewDataProvider.isSearchingComics = true
+                weakSelf?.comicsCollectionViewDataProvider.updateComics(comics: comics)
+            case .isFailure(let error):
+                dump(error)
+            }
+            
+            DispatchQueue.main.async {
+                weakSelf?.collectionView.reloadData()
+            }
+        }
     }
 }

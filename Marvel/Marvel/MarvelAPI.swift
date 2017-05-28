@@ -28,6 +28,7 @@ fileprivate struct MarvelAPIConfig {
 
 enum MarvelEndpoint {
     case comics
+    case searchComics(query: String)
     case comicCharacters(comicId: Int)
     case comicCreators(comicId: Int)
     
@@ -37,6 +38,9 @@ enum MarvelEndpoint {
         switch self {
         case .comics:
             return "\(baseUrl)/comics?\(apiAuth)&limit=100"
+        case .searchComics(let query):
+            guard let encodedQuery = query.addingPercentEncoding(withAllowedCharacters: .urlHostAllowed) else { Logger.log(message: "The queryParam was not encoded correctly.", event: .error); return "" }
+            return "\(baseUrl)/comics?\(apiAuth)&titleStartsWith=\(encodedQuery)"
         case .comicCharacters(let comicId):
             return "\(baseUrl)/comics/\(comicId)/characters?\(apiAuth)"
         case .comicCreators(let comicId):
