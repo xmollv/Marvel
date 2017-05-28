@@ -14,6 +14,7 @@ class TabBarViewController: UITabBarController {
     
     lazy var navControllerForComics: UINavigationController = {
         let comicsViewController = ComicsViewController.instantiateFrom(storyboard: .ComicsViewController)
+        comicsViewController.tabBarItem.image = UIImage(named: "spiderman")
         comicsViewController.dataProvider = self.dataProvider
         let navViewController = UINavigationController(rootViewController: comicsViewController)
         return navViewController
