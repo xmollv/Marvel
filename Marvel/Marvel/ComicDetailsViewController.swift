@@ -50,6 +50,7 @@ class ComicDetailsViewController: UIViewController {
         // This fixes the unwanted padding in the UITextViews: https://stackoverflow.com/a/42333832/5683397
         comicDescriptionTextView.textContainerInset = UIEdgeInsets.zero
         comicDescriptionTextView.textContainer.lineFragmentPadding = 0
+        comicDescriptionTextView.isUserInteractionEnabled = false
         
         creatorsLabel.font = UIFont.boldSystemFont(ofSize: 14)
         charactersLabel.font = UIFont.boldSystemFont(ofSize: 14)
