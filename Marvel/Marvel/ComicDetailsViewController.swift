@@ -54,7 +54,7 @@ class ComicDetailsViewController: UIViewController {
         creatorsLabel.font = UIFont.boldSystemFont(ofSize: 14)
         charactersLabel.font = UIFont.boldSystemFont(ofSize: 14)
 
-        charactersLabel.text = "CHARACTERS"
+        charactersLabel.text = "comic.characters".localize(in: "ComicDetailsLocalization")
         charactersCollectionView.dataSource = charactersDataSource
         charactersCollectionView.backgroundColor = Stylesheet.Color.clear
         // Let the cells scroll to the edge of the screen
@@ -63,7 +63,7 @@ class ComicDetailsViewController: UIViewController {
         // This enables the bounce even though there is only one item in the collection
         charactersCollectionView.alwaysBounceHorizontal = true
         
-        creatorsLabel.text = "CREATORS"
+        creatorsLabel.text = "comic.creators".localize(in: "ComicDetailsLocalization")
         creatorsTableView.dataSource = creatorsDataSource
         creatorsTableView.backgroundColor = Stylesheet.Color.clear
     }

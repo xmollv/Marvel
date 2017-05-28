@@ -28,3 +28,16 @@ extension UIViewController {
         return storyboard.instantiateViewController(withIdentifier: String(describing: type.self)) as! T
     }
 }
+
+
+extension String {
+    /// Recieves a tableName (.strings file) and returns the localized string if it's found
+    /// If it's not found, it will log an error
+    func localize(in tableName: String) -> String {
+        let localizedString = NSLocalizedString(self, tableName: tableName, comment: "")
+        if localizedString == self {
+            Logger.log(message: "Could not translate \(localizedString) in \(tableName)", event: .warning)
+        }
+        return localizedString
+    }
+}

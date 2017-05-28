@@ -32,6 +32,7 @@
 		B1AEF0EA1ED9E74700322179 /* ComicCreatorCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B1AEF0E91ED9E74700322179 /* ComicCreatorCell.swift */; };
 		B1AEF0EC1EDA0C6E00322179 /* SearchBarComicsReusableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B1AEF0EB1EDA0C6E00322179 /* SearchBarComicsReusableView.swift */; };
 		B1AEF0EE1EDAD66E00322179 /* ComicsDataProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = B1AEF0ED1EDAD66E00322179 /* ComicsDataProvider.swift */; };
+		B1AEF0F11EDB2A0900322179 /* ComicDetailsLocalization.strings in Resources */ = {isa = PBXBuildFile; fileRef = B1AEF0F31EDB2A0900322179 /* ComicDetailsLocalization.strings */; };
 		CAD9FFED0BF3FCAE1B381507 /* Pods_Marvel.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 038CF980A707C82B2A3572E6 /* Pods_Marvel.framework */; };
 /* End PBXBuildFile section */
 
@@ -65,6 +66,8 @@
 		B1AEF0E91ED9E74700322179 /* ComicCreatorCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ComicCreatorCell.swift; sourceTree = "<group>"; };
 		B1AEF0EB1EDA0C6E00322179 /* SearchBarComicsReusableView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SearchBarComicsReusableView.swift; sourceTree = "<group>"; };
 		B1AEF0ED1EDAD66E00322179 /* ComicsDataProvider.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ComicsDataProvider.swift; sourceTree = "<group>"; };
+		B1AEF0F21EDB2A0900322179 /* Base */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = Base; path = Base.lproj/ComicDetailsLocalization.strings; sourceTree = "<group>"; };
+		B1AEF0F41EDB2A1700322179 /* es */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = es; path = es.lproj/ComicDetailsLocalization.strings; sourceTree = "<group>"; };
 		FEE6B11622F851304E87E2B3 /* Pods-Marvel.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Marvel.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Marvel/Pods-Marvel.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -208,6 +211,7 @@
 				B1AEF0E31ED9DD4400322179 /* ComicCharactersDataSource.swift */,
 				B1AEF0E51ED9E11C00322179 /* ComicCharacterCell.swift */,
 				B18CF9C61ED98FF200FB7C22 /* ComicDetailsViewController.storyboard */,
+				B1AEF0F31EDB2A0900322179 /* ComicDetailsLocalization.strings */,
 			);
 			name = ComicDetailsViewController;
 			sourceTree = "<group>";
@@ -259,6 +263,7 @@
 			knownRegions = (
 				en,
 				Base,
+				es,
 			);
 			mainGroup = B18CF9831ED8A68700FB7C22;
 			productRefGroup = B18CF98D1ED8A68700FB7C22 /* Products */;
@@ -279,6 +284,7 @@
 				B18CF9AF1ED8AAF100FB7C22 /* TabBarViewController.storyboard in Resources */,
 				B18CF9BE1ED8B86600FB7C22 /* ComicsViewController.storyboard in Resources */,
 				B18CF99C1ED8A68700FB7C22 /* LaunchScreen.storyboard in Resources */,
+				B1AEF0F11EDB2A0900322179 /* ComicDetailsLocalization.strings in Resources */,
 				B18CF9991ED8A68700FB7C22 /* Assets.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -372,6 +378,15 @@
 			name = LaunchScreen.storyboard;
 			sourceTree = "<group>";
 		};
+		B1AEF0F31EDB2A0900322179 /* ComicDetailsLocalization.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				B1AEF0F21EDB2A0900322179 /* Base */,
+				B1AEF0F41EDB2A1700322179 /* es */,
+			);
+			name = ComicDetailsLocalization.strings;
+			sourceTree = "<group>";
+		};
 /* End PBXVariantGroup section */
 
 /* Begin XCBuildConfiguration section */
@@ -379,6 +394,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_LOCALIZABILITY_NONLOCALIZED = YES;
 				CLANG_ANALYZER_NONNULL = YES;
 				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
@@ -430,6 +446,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_LOCALIZABILITY_NONLOCALIZED = YES;
 				CLANG_ANALYZER_NONNULL = YES;
 				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
