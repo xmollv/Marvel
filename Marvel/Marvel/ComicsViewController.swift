@@ -13,7 +13,7 @@ class ComicsViewController: UIViewController {
     @IBOutlet var collectionView: UICollectionView!
     
     var dataProvider: DataProvider!
-    var comics: [Comic]?
+    var comicsCollectionViewDataProvider = ComicsDataProvider()
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -22,8 +22,7 @@ class ComicsViewController: UIViewController {
         dataProvider.getComics { [weak weakSelf = self] result in
             switch result {
             case .isSuccess(let comics):
-                weakSelf?.comics = []
-                comics?.forEach({ weakSelf?.comics?.append($0) })
+                weakSelf?.comicsCollectionViewDataProvider.updateComics(comics: comics)
             case .isFailure(let error):
                 dump(error)
             }
@@ -48,46 +47,8 @@ class ComicsViewController: UIViewController {
     private func customizeCollectionView() {
         collectionView.backgroundColor = UIColor.clear
         collectionView.delegate = self
-        collectionView.dataSource = self
+        collectionView.dataSource = comicsCollectionViewDataProvider
         collectionView.contentInset = UIEdgeInsetsMake(0, 10, 10, 10)
-    }
-
-}
-
-extension ComicsViewController: UICollectionViewDataSource {
-    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        guard let comicsCount = comics?.count else {
-            let activityIndicator = UIActivityIndicatorView(activityIndicatorStyle: .gray)
-            activityIndicator.startAnimating()
-            activityIndicator.hidesWhenStopped = true
-            collectionView.backgroundView = activityIndicator
-            return 0
-        }
-        
-        if comicsCount == 0 {
-            let label = UILabel()
-            label.textAlignment = .center
-            label.font = UIFont.systemFont(ofSize: 10)
-            label.text = "No comics found."
-            collectionView.backgroundView = label
-        } else {
-            collectionView.backgroundView = nil
-        }
-        
-        return comicsCount
-    }
-    
-    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        guard let comic = comics?[indexPath.row] else { return UICollectionViewCell() }
-        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "ComicsCell", for: indexPath) as! ComicsCell
-        cell.configure(with: comic)
-        return cell
-    }
-    
-    func collectionView(_ collectionView: UICollectionView, viewForSupplementaryElementOfKind kind: String, at indexPath: IndexPath) -> UICollectionReusableView {
-        let searchBarHeader = collectionView.dequeueReusableSupplementaryView(ofKind: UICollectionElementKindSectionHeader, withReuseIdentifier: "SearchBarComics", for: indexPath) as! SearchBarComicsReusableView
-        searchBarHeader.searchBar.delegate = self
-        return searchBarHeader
     }
 
 }
@@ -115,25 +76,7 @@ extension ComicsViewController: UICollectionViewDelegate {
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         let detailViewController = ComicDetailsViewController.instantiateFrom(storyboard: .ComicDetailsViewController)
         detailViewController.dataProvider = dataProvider
-        detailViewController.comic = comics?[indexPath.row]
+        detailViewController.comic = comicsCollectionViewDataProvider.comic(at: indexPath.row)
         navigationController?.pushViewController(detailViewController, animated: true)
-    }
-}
-
-extension ComicsViewController: UISearchBarDelegate {
-    func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
-        print(searchBar.text)
-    }
-    
-    func searchBarCancelButtonClicked(_ searchBar: UISearchBar) {
-        searchBar.resignFirstResponder()
-    }
-    
-    func searchBarTextDidBeginEditing(_ searchBar: UISearchBar) {
-        searchBar.setShowsCancelButton(true, animated: true)
-    }
-    
-    func searchBarTextDidEndEditing(_ searchBar: UISearchBar) {
-        searchBar.setShowsCancelButton(false, animated: true)
     }
 }
