@@ -7,15 +7,30 @@
 //
 
 import UIKit
+import SDWebImage
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
 
     var window: UIWindow?
-
+    var dataProvider: DataProvider!
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
-        // Override point for customization after application launch.
+        // Create the one and only instance of dataProvider that must be passed to every class that needs it
+        // I'm trying to mock dependency injection here by using an IUO on every view controller,
+        // because we don't have dependency injection if we instantiate our view controllers from IB.
+        dataProvider = DataProvider()
+        
+        // Create the window used for the entire app and apply a tint color
+        window = UIWindow(frame: UIScreen.main.bounds)
+        window?.makeKeyAndVisible()
+        window?.tintColor = UIColor.black
+        
+        // Instantiate our subclass of UITabBarController and establish it as the rootViewController
+        let tabBar = TabBarViewController.instantiateFrom(storyboard: .TabBarViewController)
+        tabBar.dataProvider = dataProvider
+        window?.rootViewController = tabBar
+        
         return true
     }
 
