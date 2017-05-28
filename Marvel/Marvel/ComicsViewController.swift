@@ -19,7 +19,7 @@ class ComicsViewController: UIViewController {
         super.viewDidLoad()
         configureViewController()
         
-        dataProvider.getComics { [weak weakSelf = self] result in
+        dataProvider.getComics(endpoint: .comics) { [weak weakSelf = self] result in
             switch result {
             case .isSuccess(let comics):
                 weakSelf?.comicsCollectionViewDataProvider.updateComics(comics: comics)
@@ -31,6 +31,7 @@ class ComicsViewController: UIViewController {
                 weakSelf?.collectionView.reloadData()
             }
         }
+        
     }
 
     override func didReceiveMemoryWarning() {

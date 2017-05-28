@@ -12,8 +12,8 @@ final class DataProvider {
     
     let marvelAPI = MarvelAPI()
     
-    func getComics(completion: @escaping CompletionType<[Comic]?>) {
-        marvelAPI.getComics { result in
+    func getComics(endpoint: MarvelEndpoint, completion: @escaping CompletionType<[Comic]?>) {
+        marvelAPI.request(endpoint: endpoint) { result in
             switch result {
             case .isSuccess(let json):
                 guard let json = json as? JSONDictionary, let data = json["data"] as? JSONDictionary, let results = data["results"] as? JSONArray else {
@@ -29,8 +29,8 @@ final class DataProvider {
         }
     }
     
-    func getComicCharacters(comicId: Int, completion: @escaping CompletionType<[ComicCharacter]?>) {
-        marvelAPI.getComicCharacters(comicId: comicId) { result in
+    func getComicCharacters(endpoint: MarvelEndpoint, completion: @escaping CompletionType<[ComicCharacter]?>) {
+        marvelAPI.request(endpoint: endpoint) { result in
             switch result {
             case .isSuccess(let json):
                 guard let json = json as? JSONDictionary, let data = json["data"] as? JSONDictionary, let results = data["results"] as? JSONArray else {
@@ -45,8 +45,8 @@ final class DataProvider {
         }
     }
     
-    func getComicCreators(comicId: Int, completion: @escaping CompletionType<[Creator]?>) {
-        marvelAPI.getComicCreators(comicId: comicId) { result in
+    func getComicCreators(endpoint: MarvelEndpoint, completion: @escaping CompletionType<[Creator]?>) {
+        marvelAPI.request(endpoint: endpoint) { result in
             switch result {
             case .isSuccess(let json):
                 guard let json = json as? JSONDictionary, let data = json["data"] as? JSONDictionary, let results = data["results"] as? JSONArray else {

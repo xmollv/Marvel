@@ -76,7 +76,7 @@ class ComicDetailsViewController: UIViewController {
     private func setupComicCharacters(comicId: Int?) {
         guard let comicId = comicId else { Logger.log(message: "The comic ID was nil", event: .warning); return }
         
-        dataProvider.getComicCharacters(comicId: comicId) { [weak weakSelf = self] result in
+        dataProvider.getComicCharacters(endpoint: .comicCharacters(comicId: comicId)) { [weak weakSelf = self] result in
             switch result {
             case .isSuccess(let characters):
                 DispatchQueue.main.async {
@@ -92,7 +92,7 @@ class ComicDetailsViewController: UIViewController {
     private func setupComicCreators(comicId: Int?) {
         guard let comicId = comicId else { Logger.log(message: "The comic ID was nil", event: .warning); return }
         
-        dataProvider.getComicCreators(comicId: comicId) { [weak weakSelf = self] result in
+        dataProvider.getComicCreators(endpoint: .comicCreators(comicId: comicId)) { [weak weakSelf = self] result in
             switch result {
             case .isSuccess(let creators):
                 DispatchQueue.main.async {

@@ -18,14 +18,34 @@ enum Result<T> {
     case isFailure(Error)
 }
 
-final class MarvelAPI {
-    fileprivate struct MarvelAPIConfig {
-        static let baseUrl = "https://gateway.marvel.com/v1/public"
-        static let privateKey = "73c7e99256c61901dc418726363093ae21875137"
-        static let apiKey = "ad321125f046a097576f6f693ae69eef"
-        static let timestamp = Date().timeIntervalSince1970.description
-        static let hash = "\(timestamp)\(privateKey)\(apiKey)".md5()
+fileprivate struct MarvelAPIConfig {
+    static let baseUrl = "https://gateway.marvel.com/v1/public"
+    static let privateKey = "73c7e99256c61901dc418726363093ae21875137"
+    static let apiKey = "ad321125f046a097576f6f693ae69eef"
+    static let timestamp = Date().timeIntervalSince1970.description
+    static let hash = "\(timestamp)\(privateKey)\(apiKey)".md5()
+}
+
+enum MarvelEndpoint {
+    case comics
+    case comicCharacters(comicId: Int)
+    case comicCreators(comicId: Int)
+    
+    var path: String {
+        let baseUrl = MarvelAPIConfig.baseUrl
+        let apiAuth = "ts=\(MarvelAPIConfig.timestamp)&apikey=\(MarvelAPIConfig.apiKey)&hash=\(MarvelAPIConfig.hash)"
+        switch self {
+        case .comics:
+            return "\(baseUrl)/comics?\(apiAuth)&limit=100"
+        case .comicCharacters(let comicId):
+            return "\(baseUrl)/comics/\(comicId)/characters?\(apiAuth)"
+        case .comicCreators(let comicId):
+            return "\(baseUrl)/comics/\(comicId)/creators?\(apiAuth)"
+        }
     }
+}
+
+final class MarvelAPI {
     
     private enum HTTPMethod: String {
         case get = "GET"
@@ -122,24 +142,10 @@ final class MarvelAPI {
             return Result.isFailure(error)
         }
     }
-    
 
-    // Convinience methods
-    //MARK:- Get Comics
-    func getComics(completion: @escaping CompletionType<Any?>) {
-        load(url: "\(MarvelAPIConfig.baseUrl)/comics?ts=\(MarvelAPIConfig.timestamp)&apikey=\(MarvelAPIConfig.apiKey)&hash=\(MarvelAPIConfig.hash)&limit=100") { networkResult in
-            completion(self.parseResponse(networkResult: networkResult))
-        }
-    }
-    
-    func getComicCharacters(comicId: Int, completion: @escaping CompletionType<Any?>) {
-        load(url: "\(MarvelAPIConfig.baseUrl)/comics/\(comicId)/characters?ts=\(MarvelAPIConfig.timestamp)&apikey=\(MarvelAPIConfig.apiKey)&hash=\(MarvelAPIConfig.hash)") { networkResult in
-            completion(self.parseResponse(networkResult: networkResult))
-        }
-    }
-    
-    func getComicCreators(comicId: Int, completion: @escaping CompletionType<Any?>) {
-        load(url: "\(MarvelAPIConfig.baseUrl)/comics/\(comicId)/creators?ts=\(MarvelAPIConfig.timestamp)&apikey=\(MarvelAPIConfig.apiKey)&hash=\(MarvelAPIConfig.hash)") { networkResult in
+    // Default method to perform network requests based on the endpoint provided
+    func request(endpoint: MarvelEndpoint, completion: @escaping CompletionType<Any?>) {
+        load(url: endpoint.path) { networkResult in
             completion(self.parseResponse(networkResult: networkResult))
         }
     }
