@@ -16,6 +16,9 @@ class ComicsDataProvider: NSObject, UICollectionViewDataSource {
     fileprivate var searchResults: [Comic]?
     var isSearchingComics = false
     weak var comicsViewController: ComicsViewController? = nil
+    var offset: Int {
+       return comics?.count ?? 0
+    }
     
     init(in comicsViewController: ComicsViewController, using dataProvider: DataProvider) {
         self.comics = nil
@@ -28,7 +31,10 @@ class ComicsDataProvider: NSObject, UICollectionViewDataSource {
         if isSearchingComics {
             self.searchResults = comics
         } else {
-            self.comics = comics
+            if self.comics == nil {
+                self.comics = []
+            }
+            comics?.forEach({ self.comics?.append($0) })
         }
     }
     

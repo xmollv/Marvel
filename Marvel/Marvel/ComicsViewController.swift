@@ -14,23 +14,12 @@ class ComicsViewController: UIViewController {
     
     var dataProvider: DataProvider!
     var comicsCollectionViewDataProvider: ComicsDataProvider!
+    var isFetchingData = false
 
     override func viewDidLoad() {
         super.viewDidLoad()
         configureViewController()
-    
-        dataProvider.get(.comics) { [weak weakSelf = self] (result: Result<[Comic]>) in
-            switch result {
-            case .isSuccess(let comics):
-                weakSelf?.comicsCollectionViewDataProvider.updateComics(comics: comics)
-            case .isFailure(let error):
-                dump(error)
-            }
-            
-            DispatchQueue.main.async {
-                weakSelf?.collectionView.reloadData()
-            }
-        }
+        fetchData()
     }
 
     override func didReceiveMemoryWarning() {
@@ -61,6 +50,22 @@ class ComicsViewController: UIViewController {
         collectionView.dataSource = comicsCollectionViewDataProvider
         collectionView.contentInset = UIEdgeInsetsMake(0, 10, 10, 10)
     }
+    
+    func fetchData() {
+        dataProvider.get(.comics(offset: comicsCollectionViewDataProvider.offset)) { [weak weakSelf = self] (result: Result<[Comic]>) in
+            switch result {
+            case .isSuccess(let comics):
+                weakSelf?.comicsCollectionViewDataProvider.updateComics(comics: comics)
+            case .isFailure(let error):
+                dump(error)
+            }
+            
+            DispatchQueue.main.async {
+                weakSelf?.collectionView.reloadData()
+                weakSelf?.isFetchingData = false
+            }
+        }
+    }
 
 }
 
@@ -75,7 +80,6 @@ extension ComicsViewController: UICollectionViewDelegateFlowLayout {
             cellsForRow = 3.0
         }
         
-        //let cellsForRow: CGFloat = 2.0 // This could be customized by the user or when the app is in landscape/iPad
         let cellSpacing = flowLayout.minimumInteritemSpacing
         let collectionViewInsetsWidth = collectionView.contentInset.left + collectionView.contentInset.right
         
@@ -94,6 +98,15 @@ extension ComicsViewController: UICollectionViewDelegate {
         detailViewController.dataProvider = dataProvider
         detailViewController.comic = comicsCollectionViewDataProvider.comic(at: indexPath.row)
         navigationController?.pushViewController(detailViewController, animated: true)
+    }
+    
+    func scrollViewDidScroll(_ scrollView: UIScrollView) {
+        if self.collectionView.contentOffset.y > (self.collectionView.contentSize.height - self.collectionView.bounds.size.height) {
+            if !isFetchingData && !comicsCollectionViewDataProvider.isSearchingComics {
+                isFetchingData = true
+                fetchData()
+            }
+        }
     }
 }
 
