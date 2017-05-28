@@ -27,16 +27,16 @@
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="U1m-xE-aRf">
                                     <size key="itemSize" width="177" height="243"/>
-                                    <size key="headerReferenceSize" width="0.0" height="0.0"/>
+                                    <size key="headerReferenceSize" width="50" height="50"/>
                                     <size key="footerReferenceSize" width="0.0" height="0.0"/>
                                     <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
                                 </collectionViewFlowLayout>
                                 <cells>
                                     <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="ComicsCell" id="tvV-gG-dE7" customClass="ComicsCell" customModule="Marvel" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="0.0" width="172.5" height="280"/>
+                                        <rect key="frame" x="0.0" y="50" width="172.5" height="280"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
-                                            <rect key="frame" x="0.0" y="0.0" width="173" height="280"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="172.5" height="280"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="YSB-Fj-nfR">
@@ -67,6 +67,25 @@
                                         </connections>
                                     </collectionViewCell>
                                 </cells>
+                                <collectionReusableView key="sectionHeaderView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="SearchBarComics" id="UfC-mo-Uzt" customClass="SearchBarComicsReusableView" customModule="Marvel" customModuleProvider="target">
+                                    <rect key="frame" x="0.0" y="0.0" width="375" height="50"/>
+                                    <autoresizingMask key="autoresizingMask"/>
+                                    <subviews>
+                                        <searchBar contentMode="redraw" searchBarStyle="minimal" placeholder="Search for comics" translatesAutoresizingMaskIntoConstraints="NO" id="pH7-Be-9gS">
+                                            <rect key="frame" x="0.0" y="0.0" width="375" height="50"/>
+                                            <textInputTraits key="textInputTraits"/>
+                                        </searchBar>
+                                    </subviews>
+                                    <constraints>
+                                        <constraint firstItem="pH7-Be-9gS" firstAttribute="top" secondItem="UfC-mo-Uzt" secondAttribute="top" id="7KZ-AE-zsb"/>
+                                        <constraint firstItem="pH7-Be-9gS" firstAttribute="leading" secondItem="UfC-mo-Uzt" secondAttribute="leading" id="9Y1-Ri-yl4"/>
+                                        <constraint firstAttribute="bottom" secondItem="pH7-Be-9gS" secondAttribute="bottom" id="G5j-j0-QGB"/>
+                                        <constraint firstAttribute="trailing" secondItem="pH7-Be-9gS" secondAttribute="trailing" id="ZkZ-US-9ZO"/>
+                                    </constraints>
+                                    <connections>
+                                        <outlet property="searchBar" destination="pH7-Be-9gS" id="pQe-3O-gzA"/>
+                                    </connections>
+                                </collectionReusableView>
                             </collectionView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>

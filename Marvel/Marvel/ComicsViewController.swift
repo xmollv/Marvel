@@ -49,7 +49,7 @@ class ComicsViewController: UIViewController {
         collectionView.backgroundColor = UIColor.clear
         collectionView.delegate = self
         collectionView.dataSource = self
-        collectionView.contentInset = UIEdgeInsetsMake(10, 10, 10, 10)
+        collectionView.contentInset = UIEdgeInsetsMake(0, 10, 10, 10)
     }
 
 }
@@ -83,6 +83,13 @@ extension ComicsViewController: UICollectionViewDataSource {
         cell.configure(with: comic)
         return cell
     }
+    
+    func collectionView(_ collectionView: UICollectionView, viewForSupplementaryElementOfKind kind: String, at indexPath: IndexPath) -> UICollectionReusableView {
+        let searchBarHeader = collectionView.dequeueReusableSupplementaryView(ofKind: UICollectionElementKindSectionHeader, withReuseIdentifier: "SearchBarComics", for: indexPath) as! SearchBarComicsReusableView
+        searchBarHeader.searchBar.delegate = self
+        return searchBarHeader
+    }
+
 }
 
 extension ComicsViewController: UICollectionViewDelegateFlowLayout {
@@ -106,10 +113,27 @@ extension ComicsViewController: UICollectionViewDelegateFlowLayout {
 
 extension ComicsViewController: UICollectionViewDelegate {
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        Logger.log(message: "Tapped: \(indexPath.row)", event: .debug)
         let detailViewController = ComicDetailsViewController.instantiateFrom(storyboard: .ComicDetailsViewController)
         detailViewController.dataProvider = dataProvider
         detailViewController.comic = comics?[indexPath.row]
         navigationController?.pushViewController(detailViewController, animated: true)
+    }
+}
+
+extension ComicsViewController: UISearchBarDelegate {
+    func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
+        print(searchBar.text)
+    }
+    
+    func searchBarCancelButtonClicked(_ searchBar: UISearchBar) {
+        searchBar.resignFirstResponder()
+    }
+    
+    func searchBarTextDidBeginEditing(_ searchBar: UISearchBar) {
+        searchBar.setShowsCancelButton(true, animated: true)
+    }
+    
+    func searchBarTextDidEndEditing(_ searchBar: UISearchBar) {
+        searchBar.setShowsCancelButton(false, animated: true)
     }
 }
