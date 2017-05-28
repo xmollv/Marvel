@@ -87,7 +87,8 @@ class ComicDetailsViewController: UIViewController {
                     weakSelf?.charactersCollectionView.reloadData()
                 }
             case .isFailure(let error):
-                dump(error)
+                if let weakSelf = weakSelf { MarvelError.handle(error: error, onCurrentViewController: weakSelf) }
+                
             }
         }
     }
@@ -103,7 +104,7 @@ class ComicDetailsViewController: UIViewController {
                     weakSelf?.creatorsTableView.reloadData()
                 }
             case .isFailure(let error):
-                dump(error)
+                if let weakSelf = weakSelf { MarvelError.handle(error: error, onCurrentViewController: weakSelf) }
             }
         }
     }

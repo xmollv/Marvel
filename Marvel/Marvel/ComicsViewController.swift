@@ -58,7 +58,7 @@ class ComicsViewController: UIViewController {
             case .isSuccess(let comics):
                 weakSelf?.comicsCollectionViewDataProvider.updateComics(comics: comics)
             case .isFailure(let error):
-                dump(error)
+                if let weakSelf = weakSelf { MarvelError.handle(error: error, onCurrentViewController: weakSelf) }
             }
             
             DispatchQueue.main.async {
@@ -150,7 +150,7 @@ extension ComicsViewController: UISearchBarDelegate {
                 weakSelf?.comicsCollectionViewDataProvider.isSearchingComics = true
                 weakSelf?.comicsCollectionViewDataProvider.updateComics(comics: comics)
             case .isFailure(let error):
-                dump(error)
+                if let weakSelf = weakSelf { MarvelError.handle(error: error, onCurrentViewController: weakSelf) }
             }
             
             DispatchQueue.main.async {
