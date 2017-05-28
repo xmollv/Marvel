@@ -37,6 +37,16 @@ class ComicsViewController: UIViewController {
         super.didReceiveMemoryWarning()
     }
     
+    override func traitCollectionDidChange(_ previousTraitCollection: UITraitCollection?) {
+        super.traitCollectionDidChange(previousTraitCollection)
+        collectionView.collectionViewLayout.invalidateLayout()
+    }
+    
+    override func viewWillTransition(to size: CGSize, with coordinator: UIViewControllerTransitionCoordinator) {
+        super.viewWillTransition(to: size, with: coordinator)
+        collectionView.collectionViewLayout.invalidateLayout()
+    }
+    
     private func configureViewController() {
         automaticallyAdjustsScrollViewInsets = false
         view.backgroundColor = Stylesheet.Color.grey1
@@ -60,7 +70,12 @@ extension ComicsViewController: UICollectionViewDelegateFlowLayout {
             fatalError("The layout for the collection view was not a UICollectionViewFlowLayout")
         }
         
-        let cellsForRow: CGFloat = 2.0 // This could be customized by the user or when the app is in landscape/iPad
+        var cellsForRow: CGFloat = 2.0
+        if collectionView.bounds.size.width > collectionView.bounds.size.height {
+            cellsForRow = 3.0
+        }
+        
+        //let cellsForRow: CGFloat = 2.0 // This could be customized by the user or when the app is in landscape/iPad
         let cellSpacing = flowLayout.minimumInteritemSpacing
         let collectionViewInsetsWidth = collectionView.contentInset.left + collectionView.contentInset.right
         
