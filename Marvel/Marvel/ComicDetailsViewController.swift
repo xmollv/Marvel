@@ -35,6 +35,9 @@ class ComicDetailsViewController: UIViewController {
     }
     
     private func configureViewController() {
+        // I try to avoid using the Storyboards to configure the behaviour of a view.
+        // If we change the behaviour in code, we are completely sure about what default behaviour
+        // we are changing. It's extremely easy to miss a checkbox in IB when looking for an 'unwanted' behaviour.
         automaticallyAdjustsScrollViewInsets = false
         view.backgroundColor = Stylesheet.Color.grey1
         containerView.backgroundColor = Stylesheet.Color.clear

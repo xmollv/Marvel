@@ -9,15 +9,20 @@
 import Foundation
 import CryptoSwift
 
+// Handy typealiases to reduce the methods signature
 typealias JSONDictionary = Dictionary<String,Any>
 typealias JSONArray = Array<JSONDictionary>
 typealias CompletionType<T> = (Result<T>) -> ()
 
+// This is what the completion handlers will return, making it extremely
+// easy to switch between the two states of an API response
 enum Result<T> {
     case isSuccess(T)
     case isFailure(Error)
 }
 
+// This struct holds the needed data to call the Marvel API
+// The API keys should not be saved in a public repo, but for now it'll do
 fileprivate struct MarvelAPIConfig {
     static let baseUrl = "https://gateway.marvel.com/v1/public"
     static let privateKey = "73c7e99256c61901dc418726363093ae21875137"
@@ -26,6 +31,8 @@ fileprivate struct MarvelAPIConfig {
     static let hash = "\(timestamp)\(privateKey)\(apiKey)".md5()
 }
 
+// This enum describes the endpoints that will be called by the App, reducing the
+// method signature at the call site
 enum MarvelEndpoint {
     case comics(offset: Int)
     case searchComics(query: String)

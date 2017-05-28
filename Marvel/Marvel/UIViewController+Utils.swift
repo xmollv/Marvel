@@ -16,6 +16,8 @@ enum MarvelStoryboard: String {
     case ComicDetailsViewController
 }
 
+// This extension makes it extremely easy to instantiate view controllers from an stoyboard,
+// avoids 'String' APIs and return the ViewController casted to the correct type
 extension UIViewController {
     class func instantiateFrom(storyboard: MarvelStoryboard) -> Self {
         return instantiateFromStoryboardHelper(type: self, storyboardName: storyboard.rawValue)

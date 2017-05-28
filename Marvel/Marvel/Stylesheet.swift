@@ -9,6 +9,7 @@
 import Foundation
 import UIKit
 
+// This struct should define every UI aspect of the app
 struct Stylesheet {
     
     struct Color {

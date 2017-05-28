@@ -13,6 +13,7 @@ class ComicsViewController: UIViewController {
     @IBOutlet var collectionView: UICollectionView!
     
     var dataProvider: DataProvider!
+    // The DataSource has been extracted to it's own class
     var comicsCollectionViewDataProvider: ComicsDataProvider!
     var isFetchingData = false
 
@@ -69,12 +70,15 @@ class ComicsViewController: UIViewController {
 
 }
 
+// The UICollectionViewDelegate & UICollectionViewDelegateFlowLayout should probably go into it's own class to avoid a massive view controller
+// but because we are using just a few of them, i've just extracted the UICollectionViewDataSource
 extension ComicsViewController: UICollectionViewDelegateFlowLayout {
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
         guard let flowLayout = collectionView.collectionViewLayout as? UICollectionViewFlowLayout else {
             fatalError("The layout for the collection view was not a UICollectionViewFlowLayout")
         }
         
+        // The number of cells changes based on the device orientation
         var cellsForRow: CGFloat = 2.0
         if collectionView.bounds.size.width > collectionView.bounds.size.height {
             cellsForRow = 3.0
@@ -100,6 +104,8 @@ extension ComicsViewController: UICollectionViewDelegate {
         navigationController?.pushViewController(detailViewController, animated: true)
     }
     
+    // This method enables the pagination for the API calls. We should display an UIActivityIndicator at the bottom
+    // of the UICollectionView when the app is requesting more items. To ship the app earlier, I've avoided it.
     func scrollViewDidScroll(_ scrollView: UIScrollView) {
         if self.collectionView.contentOffset.y > (self.collectionView.contentSize.height - self.collectionView.bounds.size.height) {
             if !isFetchingData && !comicsCollectionViewDataProvider.isSearchingComics {
@@ -109,8 +115,7 @@ extension ComicsViewController: UICollectionViewDelegate {
         }
     }
 }
-
-
+// The UISearchBarDelegate should probably go into it's own class to avoid a massive view controller
 extension ComicsViewController: UISearchBarDelegate {
     func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
         guard let textQuery = searchBar.text else {
@@ -127,6 +132,10 @@ extension ComicsViewController: UISearchBarDelegate {
         }
     }
     
+    // I've decided to make the search only when the user types the entire search query instead of searching every time
+    // the value changes, because i've experienced some queries taking up to 50s to process the first time. The next time
+    // the same query is fired, it works way faster (i guess they are caching it in some Redis or something similar), but it's
+    // unusable most of the time
     func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
         guard let textQuery = searchBar.text else { return }
         searchBar.resignFirstResponder()
